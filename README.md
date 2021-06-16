@@ -43,6 +43,26 @@ Test: "User can click "hold" button and add turn total to their player total"
 Code: "addToTurnTotal = addToPlayerTotal"
 Expected Output: "If player total is 5, and turn total is 6, user presses hold, player total displays 11"
 
+Test: "Winner Check"
+Code: "addHoldTotal + Roll"
+Expected Output: "If player has 96 and rolls a 4, then display winner"
 
+Test: "Store Hold Total into Player object"
+Code: "addHoldTotal + Roll"
+Expected Output: "activePlayers = {"name: Michael, ID: 1, holdTotal: 55}"
 
+Test: "Switch Active Players"
+Code: ""
+Expected Output: "When Player 1 holds or rolls 1, get player 2 ID, show active player "
 
+Test: "Display Both Player Totals"
+Code: "holdTotal"
+Expected Output: "When Player 1 has 50, show 50, if player 2 has 77, show 77"
+
+Test: "Update Hold Total for each player"
+Code: "holdTotal"
+Expected Output: "When Player 1 holds, update from 55 to 60"
+
+Test: "Display active player as winner"
+Code: "holdTotal"
+Expected Output: "If active player holdtotal >= 100, display active player as winner""

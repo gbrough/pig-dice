@@ -1,0 +1,56 @@
+.game {
+  display:none;
+}
+#player-setup-button {
+display: block;
+margin:1em auto;
+padding:1em 5em;
+text-align: center;
+justify-content: center;
+}
+
+.center-button {
+  width:100%;
+}
+#play {  
+  width:50%;
+  margin:2rem auto;
+  display:block;
+  padding:1rem 5rem;
+  border:solid black 1px;
+  background-color: #EAA699;
+  text-align:center;
+  font-weight:bold;
+  font-size:2rem;
+  border-radius: 1rem;
+}
+.player-1-setup, .player-2-setup {
+  display:flex;
+  background-color:#EAA699;
+justify-content:space-around;
+align-items: center;
+border-radius: 1rem;
+}
+.setup, .game {
+background-color: #EDDAC9;
+padding:1rem;
+border-radius: 1rem;
+}
+body {
+  background-color:#1F1D0E;
+}
+.form-label {
+  clear:both;
+}
+label {
+  font-weight:bold;
+}
+#title {
+  text-align: center;
+}
+.player-stats {
+border:solid black 5px;
+}
+.winner {
+  display:none;
+}
