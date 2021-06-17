@@ -1,6 +1,18 @@
-.game {
+.game, .winner {
   display:none;
 }
+
+.player-wrap {
+  margin:1rem auto;
+  background-color:rgba(255, 255, 255, .75);
+  padding:1rem;
+  border-radius:1rem;  
+}
+
+#result, #turn-total {
+  font-size:1.5rem;
+}
+
 #player-setup-button {
 display: block;
 margin:1em auto;
@@ -9,10 +21,15 @@ text-align: center;
 justify-content: center;
 }
 
+.player-stats {
+  border-radius: 1rem;
+}
+
 .center-button {
   width:100%;
 }
-#play {  
+
+#play, #play-again {  
   width:50%;
   margin:2rem auto;
   display:block;
@@ -24,33 +41,67 @@ justify-content: center;
   font-size:2rem;
   border-radius: 1rem;
 }
+button {
+  width:45%;
+  padding:1rem;
+}
+#turn-total {
+    margin-bottom:1rem;
+  }
+
 .player-1-setup, .player-2-setup {
   display:flex;
   background-color:#EAA699;
-justify-content:space-around;
-align-items: center;
-border-radius: 1rem;
+  justify-content:space-around;
+  align-items: center;
+  border-radius: 1rem;
 }
-.setup, .game {
-background-color: #EDDAC9;
-padding:1rem;
-border-radius: 1rem;
+.player-2-setup {
+  text-align: right;
 }
+.container {
+  background-color: #EDDAC9;
+  padding:2rem;
+  border-radius: 1rem;
+  opacity:.95;
+  margin-top:1rem;
+}
+
 body {
   background-color:#1F1D0E;
+  transition: background-color 0.5s ease;
 }
 .form-label {
   clear:both;
 }
+
 label {
   font-weight:bold;
 }
+
 #title {
   text-align: center;
 }
-.player-stats {
-border:solid black 5px;
+
+#play:hover, #play-again:hover {
+  cursor: pointer;
 }
+
 .winner {
-  display:none;
+  text-align: center;
+}
+
+.player-2-stats {
+  text-align:right;
+}
+
+.active-player-stats {
+  text-align:center;
+}
+
+.score-bar {
+  background-color:green;
+  height:2rem;
+  width:100%;
+  display:block;
 }

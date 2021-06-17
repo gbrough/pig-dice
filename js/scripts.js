@@ -46,6 +46,13 @@ function switchActivePlayer(activePlayer) {
   }
 }
 
+function setPlayerName(name, num) {
+  if (name === "") {
+    return "Player "+num;
+  } else
+  return name;
+}
+
 //Biz for Player
 function Player(playerName,activeTotal,color) {
   this.playerName = playerName;
@@ -65,26 +72,27 @@ let activePlayers = new Players();
 function winnerCheck(playerTotal, turnTotal, activePlayer) {
   if ((turnTotal + playerTotal) >= 100) {
     $("#winner").html(activePlayer.playerName + " is the winner!");
-    $("#winner").fadeToggle(1000);
-    $(".game").fadeToggle(1000);
+    $(".winner").fadeToggle(1000);
+    $(".game").toggle();
   };
 }
 function changeBgColor(id) {
 $("body").css("background-color",activePlayers.playerList[id].color);
+if (id === 1) {
+  $(".player-1-stats").css("background-color",activePlayers.playerList[1].color);
+  $(".player-2-stats").css("background-color","");
+} else {
+  $(".player-2-stats").css("background-color",activePlayers.playerList[2].color);
+  $(".player-1-stats").css("background-color","");
+}
 }
 
 $("document").ready(function() {
   let turnTotal = 0;
   let activePlayer = "";
   $("#play").click(function (event) {
-    const inputtedPlayer1Name = $("input#player1-name").val();
-    const inputtedPlayer2Name = $("input#player2-name").val();
-    const p1Color = $("input#player1-color").val();
-    const p2Color = $("input#player2-color").val();
-    $("input#player1-name").val(""); 
-    $("input#player2-name").val(""); 
-    let player1 = new Player(inputtedPlayer1Name, 0,p1Color);
-    let player2 = new Player(inputtedPlayer2Name, 0,p2Color);
+    const player1 = new Player(setPlayerName($("input#player1-name").val(),1), 0,$("input#player1-color").val());
+    const player2 = new Player(setPlayerName($("input#player2-name").val(),2), 0,$("input#player2-color").val());
     activePlayers.addPlayer(player1);
     activePlayers.addPlayer(player2);
     $("#player-1-name").text(player1.playerName);
@@ -92,9 +100,9 @@ $("document").ready(function() {
     $("#player-2-name").text(player2.playerName);
     $("#player-2-total").text(player2.holdTotal);
     activePlayer = switchActivePlayer(activePlayer);
+    $("#active-player-name").text(activePlayer.playerName);
     $(".setup").slideToggle(1000);
     $(".game").slideToggle(1000);
-
   });
 
   $("#name-button").click(function (event) {
@@ -108,6 +116,7 @@ $("document").ready(function() {
   $("#roll").click(function() {
     let playerRoll = 0;
     playerRoll = roll();
+    //This is biz logic that should be moved
     if (playerRoll === 1) {
       $("#result").html(playerRoll);
       turnTotal=0;
@@ -129,11 +138,17 @@ $("document").ready(function() {
     activePlayer = switchActivePlayer(activePlayer);
     $("#active-player-name").text(activePlayer.playerName);
   });
+  $("#play-again").click(function (event) {
+    activePlayers.playerList[1].holdTotal = 0;
+    activePlayers.playerList[2].holdTotal = 0;
+    $("#player-1-total").text(activePlayers.playerList[1].holdTotal);
+    $("#player-2-total").text(activePlayers.playerList[2].holdTotal);
+    activePlayer = switchActivePlayer(activePlayer);
+    $("#player-total").html("0");
+    turnTotal = 0;
+    $("#turn-total").html(turnTotal);
+    $("#result").html(turnTotal);
+    $(".winner").toggle();
+    $(".game").fadeToggle(1000);
+  });
 })
-
-// This is working! We need to type this in the console: activePlayers
-
-// let Player0 = new Player ("Michael",0);
-// activePlayers.addPlayer(Player0);
-// let Player1 = new Player("Garrett", 0);
-// activePlayers.addPlayer(Player1);
